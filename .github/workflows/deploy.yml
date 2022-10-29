@@ -38,5 +38,11 @@ jobs:
         docker build -f src/Dockerfile -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         
-        
+    - name: tag main branch
+      uses: butlerlogic/action-autotag@1.0.0
+      env:
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      with:
+        tag_prefix: "v"
+        version: "${{ github.run_number }}"
     
