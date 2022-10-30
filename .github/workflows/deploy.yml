@@ -11,20 +11,10 @@ jobs:
     
     name: Build Image
     runs-on: ubuntu-latest
-
-   
+    
     steps:
-
     - name: Check out code
       uses: actions/checkout@v3
-        
-  tag:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: 
-        - 12
-    steps: 
-    - uses: phish108/autotag-action@1.1.52
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN}}
+   
+    - name: Tag
+      run: git tag "v${{ github.run_number }}"
