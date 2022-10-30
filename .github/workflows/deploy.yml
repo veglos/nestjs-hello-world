@@ -18,7 +18,7 @@ jobs:
    
     - name: Create Tag
       run: |
-       git tag "v${{ github.run_number }}"
+       git tag v${{ github.run_number }}
     
     - name: Push changes
       uses: ad-m/github-push-action@v0.6.0
